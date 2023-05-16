@@ -17,7 +17,7 @@ jobs:
         python-version: ${{ matrix.python-version }}
         cache: 'pip'
         cache-dependency-path: setup.py
-    - name: Set up locale
+    - name: Set locale
       run: |
         sudo locale-gen en_US.UTF-8
         sudo update-locale LANG=en_US.UTF-8
@@ -26,6 +26,9 @@ jobs:
         # Install deps as root since we will run tests as root
         scripts/ci-install-deps.sh
         pip install --no-binary :all: .
+    - run: python -c 'import site; print(site.USER_BASE)'
+    - run: ls /usr/share/locale/
+    - run: ls /usr/share/input-remapper/
     - name: Run tests
       run: |
         # FIXME: Had some permissions issues, currently worked around by running tests as root

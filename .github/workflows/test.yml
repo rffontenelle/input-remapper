@@ -25,5 +25,6 @@ jobs:
     - name: Run tests
       run: |
         # FIXME: Had some permissions issues, currently worked around by running tests as root
+        sudo locale-gen en_US.utf-8
         mkdir test_tmp
         TMPDIR="$(realpath test_tmp)" python tests/test.py --start-dir unit

@@ -26,9 +26,12 @@ jobs:
         # Install deps as root since we will run tests as root
         scripts/ci-install-deps.sh
         pip install --no-binary :all: .
-    - run: python -c 'import site; print(site.USER_BASE)'
-    - run: ls /usr/share/locale/
-    - run: ls /usr/share/input-remapper/
+    - run: ls ~/.local/share/input-remapper
+      continue-on-error: true
+    - run: ls /usr/share/input-remapper
+      continue-on-error: true
+    - run: ls /usr/local/share/input-remapper
+      continue-on-error: true
     - name: Run tests
       run: |
         # FIXME: Had some permissions issues, currently worked around by running tests as root

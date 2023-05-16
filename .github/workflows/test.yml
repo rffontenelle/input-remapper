@@ -20,10 +20,10 @@ jobs:
     - name: Install dependencies
       run: |
         # Install deps as root since we will run tests as root
-        sudo scripts/ci-install-deps.sh
-        sudo pip install --no-binary :all: .
+        scripts/ci-install-deps.sh
+        pip install --no-binary :all: .
     - name: Run tests
       run: |
         # FIXME: Had some permissions issues, currently worked around by running tests as root
         mkdir test_tmp
-        TMPDIR="$(realpath test_tmp)" sudo python tests/test.py --start-dir unit
+        TMPDIR="$(realpath test_tmp)" python tests/test.py --start-dir unit

@@ -4,9 +4,9 @@ on: [push, pull_request]
 
 jobs:
   build:
-    fail-fast: false
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         python-version: ["3.7", "3.11"] # min and max supported versions?
     steps:

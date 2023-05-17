@@ -17,15 +17,11 @@ jobs:
         python-version: ${{ matrix.python-version }}
         cache: 'pip'
         cache-dependency-path: setup.py
-    - name: Set locale
-      run: |
-        sudo locale-gen en_US.UTF-8
-        sudo update-locale LANG=en_US.UTF-8
     - name: Install dependencies
       run: |
         # Install deps as root since we will run tests as root
         scripts/ci-install-deps.sh
-        pip install --no-binary :all: .
+        pip install -vvv --no-binary :all: .
     - run: ls ~/.local/share/input-remapper
       continue-on-error: true
     - run: ls /usr/share/input-remapper

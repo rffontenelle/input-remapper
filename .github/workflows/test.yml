@@ -22,6 +22,7 @@ jobs:
         # Install deps as root since we will run tests as root
         scripts/ci-install-deps.sh
         pip install -vvv --no-binary :all: .
+    - run: find / -name input-remapper
     - run: ls ~/.local/share/input-remapper
       continue-on-error: true
     - run: ls /usr/share/input-remapper

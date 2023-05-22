@@ -24,6 +24,8 @@ jobs:
         pip install -vvv --no-binary :all: .
     - run: python -c 'import pkg_resources; print(pkg_resources.require("input-remapper"))'
     - run: python -c 'import pkg_resources; print(pkg_resources.require("input-remapper")[0].location)'
+    - run: ls -R /opt/hostedtoolcache/Python/${{ matrix.python-version }}*/x64/lib/python${{ matrix.python-version }}/site-packages/usr/share/input-remapper
+    - run: ls -R /home/runner/work/input-remapper/input-remapper
     - run: find / -name input-remapper 2> /dev/null
       continue-on-error: true
     - run: find . -name input-remapper 2> /dev/null

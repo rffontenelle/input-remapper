@@ -22,10 +22,8 @@ jobs:
         # Install deps as root since we will run tests as root
         scripts/ci-install-deps.sh
         pip install -vvv --no-binary :all: .
-    - run: find / -name input-remapper
-      continue-on-error: true
-    - run: python -c 'import pkg_resources; print(pkg_resources.require("sphinx"))'
-    - run: python -c 'import pkg_resources; print(pkg_resources.require("sphinx")[0].location)'
+    - run: python -c 'import pkg_resources; print(pkg_resources.require("input-remapper"))'
+    - run: python -c 'import pkg_resources; print(pkg_resources.require("input-remapper")[0].location)'
     - name: Run tests
       run: |
         # FIXME: Had some permissions issues, currently worked around by running tests as root

@@ -24,6 +24,10 @@ jobs:
         pip install -vvv --no-binary :all: .
     - run: python -c 'import pkg_resources; print(pkg_resources.require("input-remapper"))'
     - run: python -c 'import pkg_resources; print(pkg_resources.require("input-remapper")[0].location)'
+    - run: find / -name input-remapper 2> /dev/null
+      continue-on-error: true
+    - run: find . -name input-remapper 2> /dev/null
+      continue-on-error: true
     - name: Run tests
       run: |
         # FIXME: Had some permissions issues, currently worked around by running tests as root

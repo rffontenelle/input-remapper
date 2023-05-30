@@ -21,7 +21,7 @@ jobs:
       run: |
         # Install deps as root since we will run tests as root
         scripts/ci-install-deps.sh
-        python -m pip install -vvv --prefix $Python3_ROOT_DIR --no-binary :all: .
+        python -m pip install -vvv --root $Python3_ROOT_DIR --no-binary :all: .
     - run: python -c 'import pkg_resources; print(pkg_resources.require("input-remapper"))'
     - run: python -c 'import pkg_resources; print(pkg_resources.require("input-remapper")[0].location)'
     - run: ls -R /opt/hostedtoolcache/Python/${{ matrix.python-version }}*/x64/lib/python${{ matrix.python-version }}/site-packages/usr/share/input-remapper
